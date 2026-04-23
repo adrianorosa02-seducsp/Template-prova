@@ -3,178 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inetz Cloud | Deploy Sucesso</title>
+    <title>Avaliação Integrada - 2026</title>
     <style>
         :root {
-            --primary: #00d2ff;
-            --secondary: #3a7bd5;
-            --dark: #0f172a;
-            --glass: rgba(255, 255, 255, 0.05);
-            --text: #f8fafc;
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
-            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            padding: 20px;
         }
 
         .container {
-            width: 90%;
-            max-width: 850px;
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-            padding: 0.5rem 1rem;
-            border-radius: 99px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .status-pill::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 10px #10b981;
-            animation: pulse 2s infinite;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
         }
 
-        .hero-text {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            margin-bottom: 2rem;
-        }
-
-        .grid {
+        .student-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2.5rem 0;
+            gap: 20px;
+            margin-bottom: 40px;
+            background: #eef2f3;
+            padding: 20px;
+            border-radius: 5px;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary);
-            font-size: 1rem;
-            text-transform: uppercase;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(58, 123, 213, 0.1), rgba(0, 210, 255, 0.1));
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            padding: 1.5rem;
-            border-radius: 16px;
-            margin-top: 2rem;
-        }
-
-        footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .form-group {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .question p {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin-bottom: 10px;
+            padding: 10px;
+            transition: background 0.2s;
+            border-radius: 4px;
+        }
+
+        .options li:hover {
+            background-color: #f0f8ff;
+        }
+
+        .options label {
+            font-weight: normal;
+            cursor: pointer;
+            display: flex;
             align-items: center;
-            font-size: 0.8rem;
-            color: #64748b;
         }
 
-        .badge {
-            background: #1e293b;
-            color: var(--primary);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            border: 1px solid rgba(0, 210, 255, 0.1);
+        input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
         }
 
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #status-message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="status-pill">SISTEMA ONLINE 7/24</div>
-        <h1>Projeto: <span id="proj-name">Carregando...</span></h1>
-        <p class="hero-text">Aplicação publicada com sucesso no cluster de alta disponibilidade <strong>Inetz Private Cloud</strong>.</p>
-
-        <div class="grid">
-            <div class="card">
-                <h3>🌩️ Cluster Swarm</h3>
-                <p>Este projeto não reside em um servidor comum, mas em um ambiente de nuvem privada resiliente, garantindo disponibilidade contínua.</p>
+<div class="container">
+    <h1>Avaliação Integrada</h1>
+    
+    <form id="exam-form">
+        <div class="student-info">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
             </div>
-            <div class="card">
-                <h3>⚙️ Deploy Automatizado</h3>
-                <p>Publicação via <strong>GitHub Actions</strong> diretamente para o cluster. Ciclo completo de DevOps integrado ao ensino médio.</p>
+            <div class="form-group">
+                <label for="ra">RA (Registro Acadêmico):</label>
+                <input type="text" id="ra" name="ra" required placeholder="Digite seu RA">
             </div>
         </div>
 
-        <div class="highlight-box">
-            <h4>🎯 Recurso Integrador SEDUC/SP</h4>
-            <p style="font-size: 0.95rem; margin: 0;">O desenvolvimento deste portfólio é parte essencial da sua jornada como Desenvolvedor de Sistemas. Ter seus projetos online demonstra prontidão para os desafios reais do mercado de tecnologia.</p>
+        <div id="questions-container">
+            <!-- As 30 questões serão inseridas aqui via JS -->
         </div>
 
-        <footer>
-            <div>DESENVOLVEDOR: <span class="badge" id="user-alias">Aguardando...</span></div>
-            <div>STATUS: <span class="badge">PRODUÇÃO</span></div>
-            <div style="text-align: right;"><small>Infra: Swarm Cluster 01</small></div>
-        </footer>
-    </div>
+        <button type="submit">Enviar Avaliação</button>
+        <div id="status-message"></div>
+    </form>
+</div>
 
-    <script>
-        // Lógica inteligente: consome o JSON gerado dinamicamente no deploy
-        async function loadConfig() {
-            try {
-                const response = await fetch('./info.json');
-                if (!response.ok) throw new Error();
-                const data = await response.json();
-                
-                document.getElementById('proj-name').textContent = data.projeto || "Indefinido";
-                document.getElementById('user-alias').textContent = data.alias || "Desconhecido";
-            } catch (err) {
-                // Caso o JSON ainda não exista (ex: rodando localmente)
-                document.getElementById('proj-name').textContent = "Local Host";
-                document.getElementById('user-alias').textContent = "Desenvolvedor Local";
-            }
+<script>
+    const questionsData = [
+        { q: "Segundo o PMBOK, em qual fase do ciclo de vida do projeto é realizada a atividade de 'definir cronograma e orçamento'?", options: ["Iniciação", "Execução", "Planejamento", "Monitoramento e controle", "Encerramento"] },
+        { q: "No Design Thinking, qual etapa é responsável por organizar e analisar as informações coletadas para definir o problema principal?", options: ["Empatia", "Ideação", "Definição", "Prototipagem", "Teste"] },
+        { q: "Qual prática do framework Scrum foca na entrega de valor incremental e feedbacks frequentes?", options: ["Planejamento inicial detalhado", "Entregas em ciclos curtos (Sprints)", "Minimização de reuniões de feedback", "Documentação exaustiva antes do desenvolvimento", "Escopo fechado no início do projeto"] },
+        { q: "Na matriz MoSCoW, as funcionalidades classificadas como 'Must Have' representam:", options: ["Requisitos críticos essenciais", "Requisitos importantes, mas não vitais", "Desejos futuros", "Funcionalidades que não serão implementadas", "Itens de baixo impacto"] },
+        { q: "Qual o objetivo principal do termo de abertura do projeto (Project Charter)?", options: ["Finalizar o cronograma", "Autorizar formalmente o início do projeto", "Contratar todos os fornecedores", "Realizar o encerramento financeiro", "Definir o layout do produto"] },
+        { q: "A fase de 'Empatia' no Design Thinking busca:", options: ["Criar protótipos", "Programar a interface", "Compreender as necessidades e sentimentos dos usuários", "Testar a escalabilidade", "Definir o orçamento"] },
+        { q: "No Scrum, quem é o responsável por representar os interesses dos stakeholders?", options: ["Scrum Master", "Time de Desenvolvimento", "Product Owner", "Gerente de Projetos", "CEO"] },
+        { q: "Qual técnica é utilizada para priorizar requisitos com base em 'Tem que ter' e 'Deveria ter'?", options: ["Gráfico de Gantt", "Matriz SWOT", "Matriz MoSCoW", "Diagrama de Ishikawa", "Método Kanban"] },
+        { q: "O encerramento do projeto no PMBOK inclui qual destas atividades?", options: ["Definição do escopo inicial", "Execução das tarefas", "Documentação das lições aprendidas", "Monitoramento de riscos", "Criação da EAP"] },
+        { q: "A 'Ideação' no Design Thinking é caracterizada por:", options: ["Restringir ideias", "Geração de um grande volume de soluções criativas", "Implementação imediata", "Coleta de dados demográficos", "Manutenção do status quo"] },
+        { q: "Qual evento é considerado um marco na história moderna do desenvolvimento móvel em 2007?", options: ["Lançamento do Windows Mobile", "Criação do primeiro jogo de Snake", "Lançamento do iPhone com interface touch", "Desenvolvimento do Symbian", "Lançamento do IBM Simon"] },
+        { q: "Qual componente do Android permite a modularidade de interface dentro de uma Activity?", options: ["Services", "Broadcast Receivers", "Fragments", "Content Providers", "Intents"] },
+        { q: "Por que o uso de comentários claros no código é considerado uma boa prática?", options: ["Aumenta o tamanho do executável", "Facilita a colaboração e manutenção futura", "Substitui o código funcional", "Impede que outros programadores alterem o código", "É obrigatório para o compilador"] },
+        { q: "Em HTML, qual atributo da tag <a> define o destino de um link?", options: ["src", "class", "id", "href", "alt"] },
+        { q: "Para alterar o conteúdo de texto de um elemento via JavaScript com segurança, usa-se:", options: ["text", "textContent", "content", "innerStyle", "value"] },
+        { q: "Qual tag HTML é utilizada para inserir uma imagem?", options: ["<picture>", "<graphic>", "<img>", "<media>", "<src>"] },
+        { q: "No CSS, qual seletor aplica estilos a um elemento com um 'id' específico?", options: [".", "#", "*", "@", "&"] },
+        { q: "Qual método JavaScript é usado para escutar eventos, como um clique?", options: ["listen()", "onClick()", "addEventListener()", "trigger()", "watch()"] },
+        { q: "O arquivo AndroidManifest.xml serve principalmente para:", options: ["Escrever o código Java", "Declarar permissões e componentes da aplicação", "Definir apenas o CSS", "Gerenciar o banco SQL", "Compilar o código"] },
+        { q: "No Box Model do CSS, o espaço interno entre o conteúdo e a borda é:", options: ["Margin", "Border", "Padding", "Outline", "Gap"] },
+        { q: "Qual a diferença entre 'let' e 'const' no JavaScript?", options: ["Nenhuma", "let permite reatribuição, const não", "const permite reatribuição, let não", "let é apenas para números", "const é apenas para funções"] },
+        { q: "Qual tag HTML define o título da página na aba do navegador?", options: ["<h1>", "<header>", "<title>", "<meta>", "<head>"] },
+        { q: "No desenvolvimento Mobile, o que significa a sigla APK?", options: ["Android Private Key", "Android Package Kit", "Application Process Kernel", "Advanced Programming Kit", "Automated Policy Key"] },
+        { q: "Qual propriedade CSS muda a cor de fundo de um elemento?", options: ["color", "font-color", "background-color", "border-color", "fill"] },
+        { q: "Como se declara uma função básica em JavaScript?", options: ["function:minhaFuncao()", "def minhaFuncao()", "function minhaFuncao()", "func minhaFuncao()", "minhaFuncao: function()"] },
+        { q: "O que é o DOM no desenvolvimento web?", options: ["Data Object Model", "Document Object Model", "Digital Office Management", "Direct Output Method", "Dynamic Object Maker"] },
+        { q: "No Scrum, qual a duração máxima de uma Daily?", options: ["5 minutos", "15 minutos", "30 minutos", "1 hora", "Sem limite"] },
+        { q: "Qual atributo HTML fornece um texto alternativo para imagens?", options: ["title", "description", "alt", "longdesc", "info"] },
+        { q: "Qual linguagem define a estrutura e o conteúdo de uma página web?", options: ["CSS", "JavaScript", "HTML", "PHP", "Python"] },
+        { q: "No ciclo de vida Android, qual método é chamado quando a atividade se torna visível?", options: ["onCreate()", "onStart()", "onResume()", "onPause()", "onDestroy()"] }
+    ];
+
+    const form = document.getElementById('exam-form');
+    const container = document.getElementById('questions-container');
+    const status = document.getElementById('status-message');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    function renderQuestions() {
+        container.innerHTML = '';
+
+        questionsData.forEach((data, index) => {
+            const qNum = index + 1;
+
+            const qDiv = document.createElement('div');
+            qDiv.className = 'question';
+
+            const p = document.createElement('p');
+            p.textContent = `${qNum}. ${data.q}`;
+            qDiv.appendChild(p);
+
+            const ul = document.createElement('ul');
+            ul.className = 'options';
+
+            data.options.forEach((opt, i) => {
+                const letter = String.fromCharCode(65 + i);
+
+                const li = document.createElement('li');
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+
+                input.type = 'radio';
+                input.name = `q${qNum}`;
+                input.value = letter;
+
+                // Basta um radio do grupo ter required
+                if (i === 0) input.required = true;
+
+                label.appendChild(input);
+                label.appendChild(document.createTextNode(` ${letter}) ${opt}`));
+
+                li.appendChild(label);
+                ul.appendChild(li);
+            });
+
+            qDiv.appendChild(ul);
+            container.appendChild(qDiv);
+        });
+    }
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const nome = form.nome.value.trim();
+        const ra = form.ra.value.trim();
+
+        if (!nome || !ra) {
+            status.textContent = 'Preencha nome e RA.';
+            status.style.color = 'red';
+            return;
         }
-        loadConfig();
-    </script>
+
+        const formData = new FormData(form);
+        const payload = {
+            nome,
+            ra,
+            respostas: {}
+        };
+
+        questionsData.forEach((_, index) => {
+            const qNum = index + 1;
+            payload.respostas[`q${qNum}`] = formData.get(`q${qNum}`);
+        });
+
+        const originalButtonText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+
+        status.textContent = 'Enviando...';
+        status.style.color = 'blue';
+
+        try {
+            const response = await fetch('https://webhook.inetz.com.br/webhook/avalia', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Falha no envio. Status: ${response.status}`);
+            }
+
+            status.textContent = 'Avaliação enviada com sucesso!';
+            status.style.color = 'green';
+            form.reset();
+            status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        } catch (error) {
+            status.textContent = 'Erro ao enviar. Tente novamente.';
+            status.style.color = 'red';
+            console.error('Erro:', error);
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
+    });
+
+    renderQuestions();
+</script>
+
 </body>
 </html>
